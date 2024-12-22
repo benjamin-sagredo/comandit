@@ -1,0 +1,7 @@
+# No subir todo el entorno virtual de python no sean paos
+/src/__*
+/bin
+/include
+/lib
+/lib64
+/pyvenv.cfg
