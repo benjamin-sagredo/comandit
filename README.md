@@ -9,7 +9,9 @@ source analytic-textil-back/bin/activate
 
 # Instalar todo dentro del entorno
 pip install "fastapi[standard]"
+
 pip install tensorflow[and-cuda]
+
 pip install Pillow
 
 # Cómo probar solo el backend
