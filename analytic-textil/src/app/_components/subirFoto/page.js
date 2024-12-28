@@ -1,47 +1,83 @@
 'use client'
 
 import Form from 'next/form'
-import { useState, useRef} from 'react'
+import { useState } from 'react'
 import styles from './page.module.css'
 import { redirect } from 'next/navigation'
+import Image from 'next/image'
  
-export function SubirFoto() {
-    const [files, setFiles] = useState(null)
-    const inputRef = useRef()
+export function SubirFoto({setFoto}) {
+    const [file, setFile] = useState(null)
+    const [preview, setPreview] = useState(null)
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          handleFile(file);
+        }
+    };
+
 
     const handleDragOver = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        e.stopPropagation();
     }
 
     const handleDrop = (e) => {
         e.preventDefault()
-        setFiles(e.dataTransfer.files[0])
+        e.stopPropagation();
+        const foto = e.dataTransfer.files[0]
+        if(foto) {
+            handleFile(foto)
+        }
     }
 
     const analizar = (e) => {
         redirect('/')
     }
 
+    const handleFile = (f) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+            setFile(f);
+        };
+        reader.readAsDataURL(f);
+        console.log(file)
+    }
+
+
     return (
     <>
-    {!files && (
+    <div className={styles.container}>
+    {!file && (
         <div
-            className={styles.container}
+            className={styles.container2}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             >
-            <Form action={analizar}>
-                <h1>Arrastra una imagen para analizarla o usa el boton de abajo</h1>
-                <input
-                    type='file'
-                    //onChange={(e) => setFiles(e.target.files)}
-                    hidden
-                    ref={(inputRef)}
-                />     
-            </Form>
-            <button className={styles.boton}>Seleccionar archivo</button>  
+            <h1>Arrastra una imagen para analizarla o usa el boton de abajo</h1>
+            <input
+                type='file'
+                accept='image/*'
+                onChange={handleImageChange}
+                hidden
+                id='file-input'
+            />
+            <label htmlFor="file-input" className={styles.boton}>
+                Seleccionar archivo
+            </label>
+        </div>
+        
+    )}
+    {preview && (
+        <div className={styles.container}>
+            <h1>Imagen a analizar</h1>
+            <img src={preview} alt="Vista previa" className={styles.preview} />
+            <button onClick={() => {setFile(null); setPreview(null)}}>Cancelar</button>
         </div>
     )}
+    </div>    
     </>
     )
 }

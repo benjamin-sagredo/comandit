@@ -2,6 +2,7 @@ import {Header} from './_components/header/page'
 import styles from './page.module.css'
 import Image from 'next/image';
 import fondo1 from '../../public/2324.jpg'
+import Link from 'next/link';
 
 
 export default function landingPage( {children }) {
@@ -19,6 +20,12 @@ export default function landingPage( {children }) {
                 alt="Imagen del landing page"
             />
             <h1 className={styles.textoimg}>Líderes en reconocimiento de fibras textiles</h1>
+        </div>
+
+        <div className={styles.containerBoton}>
+            <div className={styles.boton}>
+                <Link href="/pages/analisis">Haz aquí tu análisis</Link>
+            </div>
         </div>
         
         <div>
