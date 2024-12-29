@@ -1,5 +1,6 @@
 # No subir todo el entorno virtual de python no sean paos
 /src/__*
+/src/.*
 /src/IA
 /bin
 /include
