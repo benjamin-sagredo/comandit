@@ -1,4 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
@@ -42,6 +43,7 @@ async def analizar():
         confianza = resultado.group(2) 
         return{f"Resultado: {material}", f"Confianza: {confianza}"}
     else:
+        print(output)
         return {"No se pudo"}
 
 
@@ -74,3 +76,12 @@ async def nombre_imagen():
         return {"Imagen": Img.nombre}
     else:
         return {"No hay un nombre definido aún"}
+        
+        
+@app.get("/foto/{nombre}")
+async def getFoto(nombre: str):
+	path = dir_imagenes/nombre
+	if path.exists():
+		return FileResponse(path)
+	else:
+		return {'Error al intentar conseguir la imagen'}

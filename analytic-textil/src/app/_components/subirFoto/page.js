@@ -32,10 +32,6 @@ export function SubirFoto({setFoto}) {
         }
     }
 
-    const analizar = (e) => {
-        redirect('/')
-    }
-
     const handleFile = (f) => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -43,9 +39,8 @@ export function SubirFoto({setFoto}) {
             setFile(f);
         };
         reader.readAsDataURL(f);
-        console.log(file)
+        setFoto(f)
     }
-
 
     return (
     <>
