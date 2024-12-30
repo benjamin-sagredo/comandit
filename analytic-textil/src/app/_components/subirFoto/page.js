@@ -45,33 +45,33 @@ export function SubirFoto({setFoto}) {
     return (
     <>
     <div className={styles.container}>
-    {!file && (
-        <div
-            className={styles.container2}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            >
-            <h1>Arrastra una imagen para analizarla o usa el boton de abajo</h1>
-            <input
-                type='file'
-                accept='image/*'
-                onChange={handleImageChange}
-                hidden
-                id='file-input'
-            />
-            <label htmlFor="file-input" className={styles.boton}>
-                Seleccionar archivo
-            </label>
-        </div>
-        
-    )}
-    {preview && (
-        <div className={styles.container}>
-            <h1>Imagen a analizar</h1>
-            <img src={preview} alt="Vista previa" className={styles.preview} />
-            <button onClick={() => {setFile(null); setPreview(null)}}>Cancelar</button>
-        </div>
-    )}
+        {!file && (
+            <div
+                className={styles.container2}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                >
+                <h1>Arrastra una imagen para analizarla o usa el boton de abajo</h1>
+                <input
+                    type='file'
+                    accept='image/*'
+                    onChange={handleImageChange}
+                    hidden
+                    id='file-input'
+                />
+                <label htmlFor="file-input" className={styles.boton}>
+                    Seleccionar archivo
+                </label>
+            </div>
+            
+        )}
+        {preview && (
+            <div className={styles.container}>
+                <h1>Imagen a analizar</h1>
+                <img src={preview} alt="Vista previa" className={styles.preview} />
+                <button onClick={() => {setFile(null); setPreview(null)}}>Cancelar</button>
+            </div>
+        )}
     </div>    
     </>
     )

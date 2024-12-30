@@ -24,15 +24,18 @@ export default function landingPage( {children }) {
 
         <div className={styles.containerBoton}>
             <div className={styles.boton}>
-                <Link href="/pages/analisis">Haz aquí tu análisis</Link>
+                <Link href="/pages/analisis" className={styles.botonAnalisis}>Haz aquí tu análisis</Link>
             </div>
         </div>
         
-        <div>
+        <div className={styles.container}>
+            <Image src={'/comandit.png'} width={600} height={500} alt='empresa' className={styles.fotoEmpresa}/>
             <div className={styles.quienes}>
                 <h1>QUIENES SOMOS</h1>
                 <br></br>
-                <p>COMANDIT es una empresa desarrolladora de solcuiones tecnologicas y de software innovadoras y personalizadas que potencien el crecimiento y la eficiencia de empresas de todos los tamaños y sectores</p>
+                <p>Compañía Analítica de Desarrollo Industrial Tecnológica (COMANDIT) es una empresa desarrolladora de soluciones tecnológicas y de software innovadoras y personalizadas que potencien el crecimiento y la eficiencia de empresas de todos los tamaños y sectores.</p>
+                <br></br>
+                <p>La empresa nace en base a la necesidad de soluciones tecnológicas que permitan apoyar a las diferentes industrias, enfocándose principalmente en brindar aplicaciones y sistemas que simplifiquen las labores de los trabajadores en distintas áreas.</p>
             </div>
         </div>
         </>

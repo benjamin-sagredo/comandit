@@ -16,16 +16,16 @@ export function Header() {
                 alt='Logo de comandit'
             />
             <ul className={styles.ul_style}>
-                <li>
+                <li className={styles.link}>
                     <Link href="/">Inicio</Link>
                 </li>
-                <li>
+                <li className={styles.link}>
                     <Link href="/">Sobre nosotros</Link>
                 </li>
-                <li>
+                <li className={styles.link}>
                     <Link href="/">Planes</Link>
                 </li>
-                <li>
+                <li className={styles.link}>
                     <Link href="/">Contactanos</Link>
                 </li>
             </ul>

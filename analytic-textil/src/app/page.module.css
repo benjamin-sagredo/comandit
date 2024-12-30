@@ -1,7 +1,20 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.fotoEmpresa {
+    margin: 2em;
+}
 
 .imgdiv {
     margin: 5em auto;
     width: fit-content;
+    transition: 0.5s;
+}
+
+.imgdiv:hover{
+    transform: scale(1.05) translateY(-5px);
 }
 
 .img {
@@ -13,18 +26,19 @@
     background-color: floralwhite;
     text-align: center;
     position: relative;
-    top: -8.5em;
+    top: -6em;
     font-style: italic;
+    font-size:3rem;
 }
 
 .quienes {
     border-radius: 30px;
-    margin-left: 40%;
     padding: 2em;
     background-color: rgb(170, 194, 239);
-    text-align: left;
+    text-align: center;
     margin-bottom: 2em;
     box-shadow: 0px 5px 5px 1px rgb(141, 147, 169);
+    font-size: x-large;
 }
 
 .containerBoton {
@@ -37,7 +51,24 @@
     width: 30%;
     height: 100%;
     margin: auto;
-    padding: 30px 100px;
+}
+
+.boton:hover {
+    background-color: gray;
+    border-color: white;
+    font-weight: bolder;
+}
+
+.botonAnalisis {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    color: black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: x-large;
+}
+
+.botonAnalisis:hover {
+    color: white;
 }

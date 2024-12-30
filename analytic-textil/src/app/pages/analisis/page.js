@@ -2,7 +2,6 @@
 import { Header } from "@/app/_components/header/page";
 import styles from './page.module.css'
 import { SubirFoto } from "@/app/_components/subirFoto/page";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -41,7 +40,7 @@ export default function analisis(){
             <div className={styles.subirImagen}>
                 <SubirFoto setFoto={setFoto}/>
             </div>
-            <div className={styles.containerBoton}>
+            <div className={styles.containerBotonAnalisis}>
                 <button onClick={handleSubmit} className={styles.botonBoton}>
                     Analizar
                 </button>

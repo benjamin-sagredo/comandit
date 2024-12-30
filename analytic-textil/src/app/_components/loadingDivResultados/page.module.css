@@ -1,0 +1,24 @@
+
+.loadingWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loader {
+    height: 10%;
+    width: 80%;
+    border-radius: 25px;
+    --c:no-repeat linear-gradient(#2800ee 0 0);
+    background: var(--c),#d7b8fc;
+    background-size: 30% 100%;
+    animation: movimiento 4s infinite linear;
+}
+
+@keyframes movimiento {
+    0%   {background-position:-150% 0,-150% 0}
+    50%  {background-position: 250% 0,-150% 0}
+    100% {background-position: 250% 0, 250% 0}
+}

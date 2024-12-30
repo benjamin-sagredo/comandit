@@ -3,15 +3,23 @@ import { Header } from "@/app/_components/header/page";
 import styles from './page.module.css'
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Loading from "@/app/_components/loading";
+import { LoadingDivResultados } from "@/app/_components/loadingDivResultados/page";
+import Link from "next/link";
 
 
 export default function resultados(){
     const [filename, setFilename] = useState()
     const [foto, setFoto] = useState()
-    const [analisis, setAnalisis] = useState()
+    const [analisis, setAnalisis] = useState(null)
+    const [loading, setLoading] = useState(true);
     const urlNombreArchivo = 'http://localhost:8000/nombre/'
     const urlFoto = 'http://localhost:8000/foto/'
     const urlAnalisis = 'http://localhost:8000/analizar-foto/'
+
+    const handleFinishLoading = () => {
+        setLoading(false)
+    }
 
     async function analiza() {
         try {
@@ -62,33 +70,48 @@ export default function resultados(){
         getFile()
         fetchFoto()
         analiza()
+
     }, [filename])
+
+    if(loading){
+        return <Loading onFinish={handleFinishLoading}/>
+    }
 
     return (
         <>
         <Header />
         <div className={styles.container1}>
-            <div className={styles.foto}>
-            {foto && (
-                <Image src={foto} width={400} height={400} alt="Imagen analizada"/>
-            )}
+            <div className={styles.foto}> 
+                <h2>Última imagen subida</h2>
+                {foto && (
+                    <Image src={foto} width={500} height={400} alt="Imagen analizada" className={styles.preview}/>
+                )}
             </div>
             <div className={styles.container2}>
                 <div className={styles.composicion}>
-                    {analisis && (
-                        <div>
-                            {analisis[0]}
-                            <br></br>
-                            {analisis[1]}
+                    {!analisis
+                    ?
+                        <LoadingDivResultados />
+                    : (
+                        <div className={styles.resultados}>
+                            <p>{analisis[0]}</p>
+                            <p>{analisis[1]}</p>
                         </div>
-                    )}
+                    )
+                    }
                 </div>
                 <div className={styles.consejos}>
-                    CONSEJOS DE USO
+                    <p className={styles.cabecera}>Consejos de uso</p>
+                    <ul className={styles.listado}>
+                        <li><b>Lavar con agua fría o tibia:</b> El poliéster es sensible al calor, por lo que es mejor lavarlo con agua fría o tibia para evitar que se deforme o encoja.</li>
+                        <li><b>Secar al aire o a baja temperatura: </b>Es preferible secar la tela de poliéster al aire. Si usas secadora, selecciona una temperatura baja para evitar dañar las fibras.</li>
+                        <li><b>Planchar a baja temperatura: </b>El poliéster puede derretirse con calor excesivo, así que si necesitas plancharlo, usa una temperatura baja y, si es necesario, coloca un paño protector entre la plancha y la tela.</li>
+                    </ul>
                 </div>                
             </div>
-
+ 
         </div>
+        <Link href={'/pages/analisis'} className={styles.botonVolver}>Analizar otra imagen</Link>      
         </>
     );
 }
