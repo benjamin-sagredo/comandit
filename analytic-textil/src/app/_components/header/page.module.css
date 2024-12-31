@@ -2,8 +2,8 @@
 .containerHeader {
     border-radius: 30px;
     margin: 2em auto;
-    width: 40%;
-    background: rgb(170, 194, 239);
+    width: 60%;
+    background-image: linear-gradient(to right,  rgb(179, 187, 219), rgb(124, 143, 201));
     box-shadow: 0px 0px 5px 1px rgb(141, 147, 169);
 }
 
