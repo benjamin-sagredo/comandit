@@ -12,8 +12,8 @@
     box-shadow: 0px 10px 10px gray;
 }
 
-.containerBotonAnalisis{
-    background-color: rgb(174, 174, 174);
+.containerBotonAnalisis {
+    background-image: linear-gradient(45deg, #b8b8b8, #dcdcdc, #b8b8b8);
     width: 15%;
     height: 8vh;
     margin: 5em auto;
@@ -22,13 +22,13 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 5px 20px rgb(113, 113, 113);
+    transition: background-image 0.3s ease, transform 0.3s ease;
 }
 
-.containerBotonAnalisis:hover{
-    background-color: lightgray;
+.containerBotonAnalisis:hover {
+    background-image: linear-gradient(45deg, #e0e0e0, #f0f0f0, #e0e0e0); 
     transform: translateY(-5px);
 }
-
 .botonBoton {
     background-color: transparent;
     height: 100%;
